@@ -6,3 +6,5 @@ plotly
 scikit-learn
 joblib
 google-api-python-client
+flask
+flask-cors
