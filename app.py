@@ -7,7 +7,7 @@ import requests
 import json
 
 # API endpoint
-API_URL = "http://localhost:5000"
+API_URL = "https://sentiment-analysis-ai-f8je.onrender.com"
 
 # Function to predict emotions using API
 def predict_emotions(docx):
