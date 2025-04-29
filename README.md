@@ -211,5 +211,3 @@ jobs:
 - **Render** for hosting the API.
 - **Streamlit Sharing** for hosting the Streamlit app.
 - **GitHub Actions** for automating the CI/CD pipeline.
-
----
