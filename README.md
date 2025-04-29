@@ -97,4 +97,3 @@ streamlit run app.py
 - NLTK
 - Pandas & NumPy
 - Altair pour la visualisation
-- API YouTube
