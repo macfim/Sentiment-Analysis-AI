@@ -132,13 +132,22 @@ The GitHub Actions workflow automates the following steps:
 ```yaml
 name: CI/CD Pipeline
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
       - main
+    paths:
+      - "train_models.py" # Déclenche uniquement si ce fichier change
+      - ".github/workflows/ci_cd.yml" # Déclenche uniquement si ce fichier change
   pull_request:
     branches:
       - main
+    paths:
+      - "train_models.py" # Déclenche uniquement si ce fichier change
+      - ".github/workflows/ci_cd.yml" # Déclenche uniquement si ce fichier change
 
 jobs:
   train-models:
@@ -146,6 +155,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0 # Ensures full history so Git can push
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -157,9 +169,31 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Create models directory
+        run: |
+          mkdir -p models
+
       - name: Train and save models
         run: |
-          python train_models.py
+          python train_models.py  # Exécute le fichier d'entraînement
+
+      - name: Check if model file exists and diff
+        run: |
+          ls -l models
+          git status
+          git diff models/emotion_classifier_pipe_lr.pkl || echo "No diff"
+
+      - name: Commit and Push models
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git add models/emotion_classifier_pipe_lr.pkl
+          git status
+          git diff --cached || echo "No diff in staged files"
+          git commit -m "Update models via GitHub Actions" || echo "No changes to commit"
+          git push origin main || echo "No changes to push"
 
   deploy-api:
     needs: train-models
