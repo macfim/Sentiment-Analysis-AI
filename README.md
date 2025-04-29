@@ -27,8 +27,7 @@ Sentiment-Analysis-AI/
 ├── requirements.txt
 ├── README.md
 └── data/
-    ├── emotion_dataset_raw.csv
-    └── advice.csv
+    └── emotion_dataset_raw.csv
 ```
 
 ---
