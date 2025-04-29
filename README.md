@@ -13,6 +13,23 @@ This project implements a machine learning pipeline with a **Flask API** deploye
 
 ---
 
+## 📊 Project Workflow Diagram
+
+Below is the workflow diagram for the Sentiment Analysis AI project:
+
+```mermaid
+flowchart TD
+    A[Dataset CSV: emotion_dataset_raw.csv] --> B[Preprocessing & Tokenization]
+    B --> C[Feature Extraction: TF-IDF]
+    C --> D{Model Training}
+    D --> E1[LogisticRegression]
+    E1 --> F1[emotion_classifier_pipe_lr.pkl]
+    F1 --> G[API: api/api.py]
+    G --> H[Streamlit App: app.py]
+```
+
+---
+
 ## 🗂 Project Structure
 
 ```file.txt
