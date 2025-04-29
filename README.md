@@ -1,4 +1,4 @@
-# Sentiment Analysis AI - Spring 2025
+# Sentiment Analysis AI
 
 ## 📝 Overview
 
