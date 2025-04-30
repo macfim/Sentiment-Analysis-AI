@@ -13,6 +13,14 @@ This project implements a machine learning pipeline with a **Flask API** deploye
 
 ---
 
+## 🎨 Project Presentation
+
+View the complete project presentation on Canva:
+
+- **Presentation**: [https://www.canva.com/design/DAGmD-htp94/JOvPJjGVcCaQ78ZciYyq_g/view?utlId=h6bb666b1fb](https://www.canva.com/design/DAGmD-htp94/JOvPJjGVcCaQ78ZciYyq_g/view?utlId=h6bb666b1fb)
+
+---
+
 ## 📊 Project Workflow Diagram
 
 Below is the workflow diagram for the Sentiment Analysis AI project:
